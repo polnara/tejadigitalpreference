@@ -1,0 +1,1 @@
+export const enpoint_url = "https://nodejsqa.digital-east.cvshealthcloud.com:20000/microservices/icecachingservices/IntegratedCustomerExpService/getDigitalUserPreferences/1.0/Web/SampleRefID?responseFormat=xml";
