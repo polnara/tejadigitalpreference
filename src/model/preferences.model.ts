@@ -1,4 +1,4 @@
-export class Preferences{
+export interface Preferences{
     "memberID" ?: string;
     "lineOfBusinessText" ?: string;
     "lineOfBusinessIdentifier" ?: string;

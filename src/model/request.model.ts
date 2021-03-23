@@ -1,7 +1,10 @@
 import { Preferences } from "./preferences.model";
 import { Header } from "./header.model";
+import { isObject } from "util";
 
-export class Request {
+export interface Request {
     preferences:Preferences;
     header:Header;
+
+    
 }

@@ -18,6 +18,7 @@ export class AppService {
     // handle member id encryption
 
     //json to xml conversion
+
     let digitalRequest:DigitalRequest = this.convertJson(request);
     
     // send request
@@ -31,6 +32,7 @@ export class AppService {
   }
 
   convertJson(request:Request):DigitalRequest{
+    console.log(request.header)
     // header setting
     let header:Header = new Header();
     header.serviceName = "IntegratedCustomerExpService";
@@ -55,7 +57,7 @@ export class AppService {
     preference.preferenceIdentifier = "";
 
     let digitalRequest : DigitalRequest = new DigitalRequest();
-    digitalRequest.header = header;
+    // digitalRequest.header = header;
     digitalRequest.preferences = preference;
 
     
