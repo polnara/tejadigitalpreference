@@ -4,8 +4,14 @@ import { DigitalRequest } from './model/digitalPreference/request.model';
 import {Header} from './model/digitalPreference/header.model';
 import { Preferences} from './model/digitalPreference/preferences.model';
 import * as config from './config';
+import {DegitalPreferenceResponse} from './model/digitalPreference/response.model';
+import {transform} from 'camaro';
+import { DigitalPreferencesDetails } from './model/digitalPreference/DigitalPreferencesDetails.model';
+import { AxiosResponse } from 'axios'
+import { plainToClass } from 'class-transformer';
 @Injectable()
 export class AppService {
+
 
   constructor(private http:HttpService){
 
@@ -19,20 +25,25 @@ export class AppService {
 
     //json to xml conversion
 
-    let digitalRequest:DigitalRequest = this.convertJson(request);
+    let digitalRequest:DigitalRequest = this.convertToXml(request);
     
     // send request
     let endpoint = config.enpoint_url;
     
-    let response = this.http.post(endpoint,digitalRequest, {headers:{"content-type":"application/xml"}});
+    let response = this.http.post(endpoint,digitalRequest, {headers:{"content-type":"application/xml"}}).toPromise();
     
+    response.then((msg:AxiosResponse<DegitalPreferenceResponse>) => {this.convertToJSON(msg.data)})
+
     // xml to json conversion
-    console.log(response);
     // return json
   }
 
-  convertJson(request:Request):DigitalRequest{
-    console.log(request.header)
+  convertToJSON(response:DegitalPreferenceResponse){
+    let res:DigitalPreferencesDetails = plainToClass( DigitalPreferencesDetails, response)
+    console.log(res.getDigitalPreferencesResponse);
+    return response;
+  }
+  convertToXml(request:Request):DigitalRequest{
     // header setting
     let header:Header = new Header();
     header.serviceName = "IntegratedCustomerExpService";

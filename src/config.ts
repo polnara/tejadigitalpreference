@@ -1,1 +1,1 @@
-export const enpoint_url = "https://nodejsqa.digital-east.cvshealthcloud.com:20000/microservices/icecachingservices/IntegratedCustomerExpService/getDigitalUserPreferences/1.0/Web/SampleRefID?responseFormat=xml";
+export const enpoint_url = "https://run.mocky.io/v3/3dd4cc54-469e-44a1-baf7-b1db627c7e18";
