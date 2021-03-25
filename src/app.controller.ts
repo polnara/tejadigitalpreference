@@ -21,7 +21,7 @@ export class AppController {
 
   @UsePipes(new ValidationPipe())
   @Post("response")
-  async handleResponse(@Body("response") response){
+  async handleResponse(@Body ("response") response){
 
     console.log(response);
   }
